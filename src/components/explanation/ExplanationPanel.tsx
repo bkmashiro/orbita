@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react'
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
 import { useCubeStore } from '../../store/useCubeStore'
 import { FAMOUS_ALGORITHMS } from '../../core/groupTheory'
 import { motion, AnimatePresence } from 'framer-motion'
+
+function renderKatex(str: string): string {
+  try {
+    return katex.renderToString(str, { throwOnError: false, output: 'html', displayMode: true })
+  } catch {
+    return str
+  }
+}
 
 // ── Tutorial Steps ────────────────────────────────────────────
 interface Step {
@@ -332,9 +342,10 @@ export function ExplanationPanel() {
                   <h4 className="concept-title">{activeConcept.title}</h4>
                   <div className="concept-body" dangerouslySetInnerHTML={{ __html: activeConcept.body }} />
                   {activeConcept.latex && (
-                    <div className="concept-latex">
-                      <code>{activeConcept.latex}</code>
-                    </div>
+                    <div
+                      className="concept-latex"
+                      dangerouslySetInnerHTML={{ __html: renderKatex(activeConcept.latex) }}
+                    />
                   )}
                 </motion.div>
               </AnimatePresence>

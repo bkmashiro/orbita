@@ -780,13 +780,14 @@ body::before {
 }
 
 .step-pill {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  min-width: 36px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 16px;
   border: 1.5px solid var(--border);
   background: transparent;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 11px;
   font-family: 'JetBrains Mono', monospace;
   cursor: pointer;
   transition: all 0.15s;
@@ -794,6 +795,7 @@ body::before {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .step-pill:hover:not(.step-pill--locked) {
