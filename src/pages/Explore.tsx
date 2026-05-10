@@ -10,8 +10,8 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-brand">
-        <span className="brand-cube">&#x25A6;</span>
-        <span className="brand-title">Rubik's × Group Theory</span>
+        <img src="/favicon.svg" alt="Orbita" style={{width: 28, height: 28}} />
+        <span className="brand-title">Orbita</span>
       </div>
       <div className="header-status">
         {groupProps.isSolved ? (
